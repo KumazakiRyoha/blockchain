@@ -15,7 +15,7 @@ func TestSignTransaction(t *testing.T) {
 	assert.NotNil(t, tx.Signature)
 
 	privKey2 := crypto.GeneratePrivateKey();
-	tx.PublicKey = privKey2.PublicKey()
+	tx.From = privKey2.PublicKey()
 	assert.NotNil(t, tx.Verify())
 }
 
@@ -28,7 +28,7 @@ func TestVerifyTransaction(t *testing.T) {
 	assert.Nil(t, tx.Verify())
 
 	otherPrivKey := crypto.GeneratePrivateKey()
-	tx.PublicKey = otherPrivKey.PublicKey()
+	tx.From = otherPrivKey.PublicKey()
 	assert.NotNil(t, tx.Verify())
 
 }
